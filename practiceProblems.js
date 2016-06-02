@@ -39,6 +39,25 @@ function replaceSpace(str) {
      eg. aabcccccaaa => a2b1c5a3
      If the "compressed" string would not become smaller than the original string, your method should return the original string.
 */
+function compress(str) {
+  var string = "";
+  var count = 1;
+  var lastChar = str.charAt(0)
+  for (var i = 1; i < str.length; i++) {
+    if (str[i] === lastChar) {
+      count++;
+    } else {
+      string += lastChar + count;
+      lastChar = str[i];
+      count = 1;
+    }
+  }
+  if ((string += lastChar + count).length > str.length) {
+    return str;
+  } else {
+    return string;
+  }
+}
 
 /*
 1.6. Given an image represented by an NxN matrix, where each pixel in the image is 4 bytes, write a method to rotate the image by 90 degrees,
