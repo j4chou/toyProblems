@@ -63,6 +63,18 @@ function compress(str) {
 1.6. Given an image represented by an NxN matrix, where each pixel in the image is 4 bytes, write a method to rotate the image by 90 degrees,
      Can you do this in place?
 */
+// Not in place
+function rotateMatrix(matrix) {
+  var result = [];
+  for (var i = 0; i < matrix[0].length; i++) {
+    var copy = [];
+    for (var j = matrix.length - 1; j >= 0; j--) {
+      copy.push(matrix[j][i]);
+    }
+    result.push(copy);
+  }
+  return result;
+}
 
 
 /*
