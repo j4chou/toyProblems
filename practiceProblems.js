@@ -30,6 +30,7 @@ function isPermutation(str, str2) {
 }
 // Time complexity O(n log n) due to the sort function.
 
+
 function isPermutation(str,str2) {
   var chars = {};
   for (var i = 0; i < str.length; i++) {
@@ -116,3 +117,7 @@ function rotateMatrix(matrix) {
 1.8. Assume you have a method isSubstring that checks if one word is a substring of another. Given two strings, s1 and s2, write code to check if s2 is a rotation
      of s1 using only one call to isSubstring (e.g. "waterbottle" is a rotation of "erbottlewat")
 */
+
+function isSubstring(str1,str2) {
+  return str1.split('').sort().join('').includes(str2.split('').sort().join(''))
+}
