@@ -21,10 +21,40 @@ function isUnique(string) {
 */
 
 function isPermutation(str, str2) {
-  var strArr = str.split('').sort().join('')
-  var strArr2 = str2.split('').sort().join('')
-  return strArr === strArr2
+  if (str.length !== str2.length) {
+    return false;
+  }
+  var strArr = str.split('').sort().join('');
+  var strArr2 = str2.split('').sort().join('');
+  return strArr === strArr2;
 }
+// Time complexity O(n log n) due to the sort function.
+
+function isPermutation(str,str2) {
+  var chars = {};
+  for (var i = 0; i < str.length; i++) {
+    chars[str[i]] = chars[str[i]] + 1 || 1;
+  }
+  
+  for (var j = 0; j < str2.length; j++) {
+    if (!(chars[str2[j]])) {
+      return false;
+    }
+    
+    if (!(chars.hasOwnProperty(str2[j]))) {
+      return false;
+    }
+    chars[str2[j]]--;
+  }
+  
+  for (var key in chars) {
+    if (chars[key] !== 0) {
+      return false;
+    }
+  }
+  return true;
+}
+
 
 /*
 1.4. Write a method to replace all spaces in a string with '%20'
