@@ -42,7 +42,7 @@ while (currNode.next) {
 }
 
 // If val to remove is at the tail
-if (currNode.next.val === val && currNode.next.next.val === null) {
+if (currNode.next.val === val && currNode.next.next === null) {
   currNode.next = null;
 }
 
