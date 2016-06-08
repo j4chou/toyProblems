@@ -33,7 +33,7 @@ while (this.head && this.head.val === val) {
 }
 
 // If val to remove is in middle of LL
-while (currNode.next) {
+while (currNode && currNode.next) {
   if (currNode.next.val === val) {
     currNode.next = currNode.next.next;
   } else {
