@@ -11,8 +11,8 @@ var Node = function(val) {
 LinkedList.prototype.addToTail = function(val) {
   var node = new Node(val);
 
-  if (!this.head && !this.tail) {
-    this.head = this.tail = val;
+  if (!this.head) {
+    this.head = this.tail = node;
   } else {
     this.tail.next = node;
     this.tail = this.tail.next;
@@ -45,5 +45,8 @@ while (currNode && currNode.next) {
 if (currNode.next.val === val && currNode.next.next === null) {
   currNode.next = null;
 }
+}
+
+LinkedList.prototype.contains = function(val) {
 
 }
