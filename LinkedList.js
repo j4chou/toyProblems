@@ -19,6 +19,15 @@ LinkedList.prototype.addToTail = function(val) {
   }
 }
 
+LinkedList.prototype.removeHead = function() {
+  if (!this.head) {
+    return null;
+  } else {
+    this.head = this.head.next;
+  }
+  return this.head.value;
+}
+
 LinkedList.prototype.removeNode = function(val) {
 var currNode = this.head;
 
@@ -47,6 +56,12 @@ if (currNode.next.val === val && currNode.next.next === null) {
 }
 }
 
-LinkedList.prototype.contains = function(val) {
-
+LinkedList.prototype.contains = function(target) {
+  while (this.head) {
+    if (this.head.value === target) {
+      return true;
+    }
+      this.head = this.head.next;
+  }
+  return false;
 }
