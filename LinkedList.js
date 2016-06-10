@@ -3,10 +3,12 @@ var LinkedList = function() {
   this.tail = null;
 }
 
+
 var Node = function(val) {
   this.value = val;
   this.next = null;
 }
+
 
 LinkedList.prototype.addToTail = function(val) {
   var node = new Node(val);
@@ -19,6 +21,7 @@ LinkedList.prototype.addToTail = function(val) {
   }
 }
 
+
 LinkedList.prototype.removeHead = function() {
   if (!this.head) {
     return null;
@@ -28,40 +31,43 @@ LinkedList.prototype.removeHead = function() {
   return this.head.value;
 }
 
-LinkedList.prototype.removeNode = function(val) {
-var currNode = this.head;
 
+LinkedList.prototype.removeNode = function(target) {
 // If no head, handle error
 if (!this.head) {
   return null;
 }
 
 // If val to remove is at head
-while (this.head && this.head.val === val) {
+while (this.head && this.head.value === target) {
   this.head = this.head.next;
 }
 
-// If val to remove is in middle of LL
-while (currNode && currNode.next) {
-  if (currNode.next.val === val) {
-    currNode.next = currNode.next.next;
-  } else {
-    currNode = currNode.next;
+var currNode = this.head;
+// If target to remove is in middle of LL
+while (currNode) {
+  if (currNode.next && currNode.next.value === target) {
+    // If the next next node is null, the next node is the tail
+    if (currNode.next.next === null) {
+      // Set next node to null to remove tail
+      currNode.next = null;
+      // Reassign tail to the current node
+      this.tail = currNode;
+    } else {
+      currNode.next = currNode.next.next;
+    }
   }
+  currNode = currNode.next;
+}
 }
 
-// If val to remove is at the tail
-if (currNode.next.val === val && currNode.next.next === null) {
-  currNode.next = null;
-}
-}
 
 LinkedList.prototype.contains = function(target) {
   while (this.head) {
     if (this.head.value === target) {
       return true;
     }
-      this.head = this.head.next;
+    this.head = this.head.next;
   }
   return false;
 }
