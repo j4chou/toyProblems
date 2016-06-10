@@ -1,15 +1,16 @@
+/* Pseudoclassical constructor function for a LL */
 var LinkedList = function() {
   this.head = null;
   this.tail = null;
 }
 
-
+/* Pseudoclassical constructor function for a Node */
 var Node = function(val) {
   this.value = val;
   this.next = null;
 }
 
-
+/* Add to the tail of a LL */
 LinkedList.prototype.addToTail = function(val) {
   var node = new Node(val);
 
@@ -21,7 +22,7 @@ LinkedList.prototype.addToTail = function(val) {
   }
 }
 
-
+/* Remove the head of a LL */
 LinkedList.prototype.removeHead = function() {
   if (!this.head) {
     return null;
@@ -31,7 +32,7 @@ LinkedList.prototype.removeHead = function() {
   return this.head.value;
 }
 
-
+/* Remove a node. Consider edge cases */
 LinkedList.prototype.removeNode = function(target) {
 // If no head, handle error
 if (!this.head) {
@@ -61,7 +62,13 @@ while (currNode) {
 }
 }
 
+/* Remove a node without using head or tail */
+LinkedList.prototype.deleteNode = function(node) {
+  node.value = node.next.value;
+  node.next = node.next.next;
+}
 
+/* Check to see if a LL contains a value */
 LinkedList.prototype.contains = function(target) {
   while (this.head) {
     if (this.head.value === target) {
