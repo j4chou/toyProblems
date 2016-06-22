@@ -6,24 +6,26 @@ var storageLimit = 1000;
 table.insert = function(key, value){
 var index = getIndexBelowMaxForKey(key, storageLimit);
 storage[index] = storage[index] || [];
-//YOUR CODE HERE
 var bucket = storage[index];
-// create a bucket to store key and values
+// Create a bucket to store key and values
 for (var i = 0; i < bucket.length; i++) {
+  // If key exists
 if (bucket[i][0] === key) {
+  // Replace value
     bucket[i][1] = value;
     return bucket[i][1];
 } 
 }
+// Create tuple for other keys and values
 bucket.push([key,value]);
 };
 
 table.retrieve = function(key){
-//YOUR CODE HERE 
 var index = getIndexBelowMaxForKey(key, storageLimit);
 storage[index] = storage[index] || [];
 var bucket = storage[index];
 for (var i = 0; i < bucket.length; i++) {
+  // Iterate through bucket and search for key
   if (bucket[i][0] === key) {
     return bucket[i][1];
   } 
@@ -32,12 +34,12 @@ return null;
 };
 
 table.remove = function(key){
-//YOUR CODE HERE 
 var index = getIndexBelowMaxForKey(key, storageLimit);
 storage[index] = storage[index] || [];
 var bucket = storage[index];
 for (var i = 0; i < bucket.length; i++) {
 if (bucket[i][0] === key) {
+  // Remove the tuple
   bucket.splice(i,1);
 }
 }
