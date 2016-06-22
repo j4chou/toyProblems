@@ -20,11 +20,13 @@ function asyncMap(tasks, callback) {
 function asyncMap(tasks, callback) {
   var results = [];
   tasks.forEach(function(task) {
+    // Store each task as a promise
     var promise = new Promise(function(resolve, reject) {
       task(resolve);
     });
     results.push(promise);
   })
+  // Resolve all promises in results, then call callback
   Promise.all(results).then(function(result) { 
     callback(result);
   });
