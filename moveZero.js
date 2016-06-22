@@ -8,8 +8,11 @@ function sortZeroes(arr) {
   var end = arr.length-1;
   for (var i = 0; i < arr.length - 1; i++) {
     for (var j = i; j < arr.length - 1; j++) {
+      // If the value is zero
       if (arr[j] === 0) {
+        // Until the index is not the last index
         while (j !== arr.length - 1) {
+          // Swap variables and increase index
           var temp = arr[j];
           arr[j] = arr[j+1];
           arr[j+1] = temp;
