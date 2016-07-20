@@ -7,7 +7,7 @@ nums should be [1, 3, 12, 0, 0]. You must do this in-place w/o making a copy of 
 function sortZeroes(arr) {
   var end = arr.length-1;
   for (var i = 0; i < arr.length - 1; i++) {
-    for (var j = i; j < arr.length - 1; j++) {
+    for (var j = i-1; j < arr.length - 1; j++) {
       // If the value is zero
       if (arr[j] === 0) {
         // Until the index is not the last index
