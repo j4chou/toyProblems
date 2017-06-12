@@ -1,6 +1,6 @@
 function rps(rounds) {
   var results = [];
-  var combos = ["r"."p","s"];
+  var combos = ["r","p","s"];
 
   function recurse(str) {
     // If string's length is equal to round number
